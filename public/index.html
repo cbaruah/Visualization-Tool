@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="../app.js"></script>
+
+    <script type="text/javascript">
+
+        var url = 'http://localhost:3000/years/';
+
+        fetch(url)
+        .then(res => res.json())
+        .then((jsonObj) => {
+        //console.log('Checkout this JSON! ', jsonObj);
+
+        var myDDL = document.getElementById("year");
+
+        for (i = 0; i < jsonObj.length; i++) {
+            var option = document.createElement("option");
+            option.text = jsonObj[i].Year;
+            
+            option.value = jsonObj[i].Year;
+            try {
+                myDDL.options.add(option);
+            }
+            catch (e) {
+                alert(e);
+            }
+        }
+        })
+        .catch(err => { throw err });
+    </script>
+
+
+    <script type="text/javascript">
+
+        var url = 'http://localhost:3000/divisions/';
+
+        fetch(url)
+        .then(res => res.json())
+        .then((jsonObj) => {
+        console.log('Checkout this JSON! ', jsonObj);
+
+        var myDDL = document.getElementById("divison");
+        var option = document.createElement("option");
+
+        option.text = "-";
+        myDDL.options.add(option);
+
+        for (i = 0; i < jsonObj.length; i++) {
+            var option = document.createElement("option");
+            option.text = jsonObj[i].Region;
+            
+            option.value = jsonObj[i].Region;
+            try {
+                myDDL.options.add(option);
+            }
+            catch (e) {
+                alert(e);
+            }
+        }
+        })
+        .catch(err => { throw err });
+    </script>
+
+    <script>
+        function divisionSelected()
+        {
+            document.getElementById("system_name_table").innerHTML = "";
+            var valueX = document.getElementById("divison").value;
+            var url = 'http://localhost:3000/selection/'+valueX;
+
+            fetch(url)
+            .then(res => res.json())
+            .then((jsonObj) => {
+                console.log('Checkout this JSON! ', jsonObj);
+                var system_name_table = document.getElementById("system_name_table");
+
+                for (i = 0; i < jsonObj.length; i++) {
+                    var tr = document.createElement('tr');
+                    var td = document.createElement('td');
+
+                    var text = document.createTextNode(jsonObj[i].System_Name);
+                    var value = document.createTextNode(jsonObj[i].System_Name);
+                    try {
+                        td.appendChild(text);
+                        tr.appendChild(td);
+
+                        system_name_table.appendChild(tr);
+                    }
+                    catch (e) {
+                        alert(e);
+                    }
+                }
+
+                //document.body.appendChild(system_name_table);
+            })
+            .catch(err => { throw err });
+        }
+    </script>
+
+    <script>
+        function select_row()
+        {
+            var table = document.getElementById("system_name_table");
+            var rows = table.getElementsByTagName("tr");
+
+            for (i = 0; i < rows.length; i++) {
+                var currentRow = table.rows[i];
+                var createClickHandler = 
+                    function(row) 
+                    {
+                        return function() { 
+                            var cell = row.getElementsByTagName("td")[0];
+                            var id = cell.innerHTML;
+                            alert("id:" + id);
+                        };
+                    };
+
+                currentRow.onclick = createClickHandler(currentRow);
+            }
+        }
+    </script>
+
+    <meta charset="UTF-8">
+    <title>Table page</title>
+    <style>
+    table, th, td {
+        border: 4px solid white;
+        border-collapse: collapse;
+        margin-top:-100px;
+        margin-top:1px;
+        position:relative
+    }
+    </style>
+</head>
+<body>
+  <header style="width:99%;height:80px;border:2px solid white;">
+    <div>
+      <div style="float:left;width:30px;"><img src="./images/k.jpeg" width="42" height="42" ></div>
+      <div style="float:right;width:30px;"><img src="./images/index.png" width="42" height="42" ></div>
+    </div>
+    <h1 style="position: relative;
+    top: 5px;
+    left:38%;
+    ">Mock Start Page </h1>
+
+  </header>
+  <div id ="main" style="width:100%;height:600px;z-index:-1;background-color:#d3d3d3;border:2px solid black;">
+  <div id ="left"style="width:20%;height:500px;  margin-top:22px; margin-left:10px;">
+  <div style="width:100%;height:20px;border:2px solid black;background-color:#2276a6 ">
+  <!-- From the link data/system data table -->
+  <select id="year"  style="width:100%;background-color:#2276a6;border:2px #2276a6"></select>
+
+  </div><!--end of year div  -->
+  <div style="width:100%;height:20px;border:2px solid black;margin-top:35px;background-color:#2276a6 ">
+  <select id="divison"  style="width:100%;background-color:#2276a6;border:2px #2276a6" onchange="divisionSelected();">
+  <!-- <option value="">Divison 1</option> --><!-- system list database -->
+  </select>
+  </div><!--  end of divison div-->
+  <div style="width:100%;height:450px;border:2px solid black;margin-top:38px;background-color:#2276a6;overflow-y: scroll;" id="system-name">
+    <table id="system_name_table" onclick="select_row();">
+    </table>
+    <!-- System List System Name -->
+  </div>
+  </div><!-- end of left div -->
+  <div id="right" style="width:75%;height:520px; margin-top:-500px;margin-right:10px; margin-left:280px;float: right;">
+  <div  style="width:100%;height:220px;background-color: #ca2c22;" align="right" float="right">Data from Database</div>
+  <div style="width:100%;height:280px;margin-top:20px;background-color: #ca2c22;float: right;">
+  <p style="margin-top:-2px;margin-left:30px""> Table </p>
+  <table style=" border:1px solid white;width:90%;height:200px;margin-left:30px;margin-top:1px;" >
+  <tr style="background-color:#2276a6" >
+   <th>System</th>
+      <th>PM1</th>
+      <th>PM2</th>
+       <th>PM3</th>
+      </tr>
+   <tr style=" border: 1px solid red;background-color:#d3d3d3">
+      <td> xxx</td>
+      <td>xxx </td>
+      <td>xxx </td>
+      <td>xxx </td>
+    </tr>
+    <tr style="border: 1px solid red;background-color: #eee6e6">
+     <td>xxx </td>
+      <td> xxx</td>
+      <td> xxx</td>
+      <td>xxx </td>
+    </tr>
+    <tr style=" border: 1px solid red;background-color:#d3d3d3">
+      <td> xxx</td>
+      <td>xxx </td>
+      <td>xxx </td>
+      <td>xxx </td>
+    </tr>
+    <tr style="border: 1px solid red;background-color: #eee6e6">
+     <td>xxx </td>
+      <td> xxx</td>
+      <td> xxx</td>
+      <td>xxx </td>
+    </tr>
+    </table>
+  </div>
+  <div id="down" style="width:99%;height:20px;margin-top:15px ">
+  <div id="export" style="margin-left:400px;position:relative;margin-top:-1px">
+   <button style="background-color:#2276a6;" type="button">Export Data</button>
+   <button onclick="location.href = 'index1.html'"; style="background-color: #2276a6;float: right" type="button"> System Details -></button> 
+   </div>
+<!--   <div id="back" style="margin-left:700px;position:relative;margin-top:-20px;background-color:#2276a6 " align="center">
+    
+   </div> -->
+  </div>
+
+
+  </div><!-- end of right div -->
+  </div><!-- end of main div --> 
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="render.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:300,400,700'>
+
+      <link rel="stylesheet" href="style.css">
+	
+    <title>Solr Search</title>
+    <style>
+div.relative {
+    position: fixed;
+    centre:0;
+    
+   
+}
+.main {
+background-color: red;
+
+
+}
+table, th, td {
+    border: 4px solid red;
+     border-collapse: collapse;
+}
+</style>
+</head>
+<body>
+<header style="width:99%;height:80px;border:2px solid white;">
+<div>
+<div style="float:left;width:30px;"><img src="k.jpeg" width="42" height="42" ></div>
+<div style="float:right;width:30px;"><img src="index.png" width="42" height="42" ></div>
+</div>
+<h1 style="position: relative;
+top: 5px;
+left:38%;
+">Mock - Up Drill - Down</h1>
+
+</header>
+<div id ="main" style="width:100%;height:550px;border:2px solid black;z-index:-1;background-color:#d3d3d3;"> 
+<div id ="left"style="width:20%;height:350px;  margin-top:22px; margin-left:10px;">
+<div style="width:100%;height:20px;border:2px solid black;background-color:#2276a6 ">System Name</div>
+<div style="width:100%;height:220px; margin-top:35px;border:2px solid black;background-color:#2276a6 ">
+
+<div style="margin-top:150px"class="weekDays-selector">
+  <input type="checkbox" id="weekday-sun">
+  <label for="weekday-sun">S</label>
+  <input type="checkbox" id="weekday-mon">
+  <label for="weekday-mon">M</label>
+  <input type="checkbox" id="weekday-tue">
+  <label for="weekday-tue">T</label>
+  <input type="checkbox" id="weekday-wed">
+  <label for="weekday-wed">W</label>
+  <input type="checkbox" id="weekday-thu">
+  <label for="weekday-thu">T</label>
+  <input type="checkbox" id="weekday-fri">
+  <label for="weekday-fri">F</label>
+  <input type="checkbox" id="weekday-sat">
+  <label for="weekday-sat">S</label>
+
+</div>
+</div><!--Analysisi period  -->
+<div style="width:100%;height:160px; margin-top:35px;border:2px solid black;background-color:#2276a6 ">
+<div style="width:80%;height:20px; margin-top:30px;background-color:#2276a6 ">
+ <select style="width:10%;" name="Time Period" style="width:100%;background-color:#2276a6 ">
+ <option value=""></option>
+</select> 
+Time Period 1 [-] </div>
+<div style="width:80%;height:20px; margin-top:30px;background-color:#2276a6 ">
+ <select style="width:10% " name="Time Period" >
+ <option value=""></option>
+</select> 
+Time Period 2 [-] </div>
+<div style="width:80%;height:20px; margin-top:30px;background-color:#2276a6 ">
+ <select style="width:10%;" name="Time Period" style="width:100%;background-color:#2276a6 ">
+ <option value=""></option>
+</select> 
+Time Period 3 [-] </div>
+
+</div><!--end of 3 drop down list  -->
+
+</div><!-- left div closing -->
+<div id = "right" style="width:75%;height:500px; margin-top:-350px;margin-right:10px; margin-left:280px;float: right;">
+<div id ="table"style="width:99%;height:130px;border:2px solid black;background-color:#2276a6 ">System Segments
+  <p style="margin-top:-2px;margin-left:30px"> <-westbound </p>
+<table style=" border: 1px solid red;width:90%;height:50px;margin-left:30px;margin-top:1px">
+
+ <tr style=" border: 1px solid red">
+    <td> xxx</td>
+    <td>xxx </td>
+    <td>xxx </td>
+    <td>xxx </td>
+  </tr>
+  <tr>
+   <td>xxx </td>
+    <td> xxx</td>
+    <td> xxx</td>
+    <td>xxx </td>
+  </tr>
+</table>
+<p style="margin-top:-2px;margin-left:30px"> eastbound -> </p>
+</div><!-- end of table div -->
+<div style="width:35%;height:20px; margin-top:30px;background-color:#2276a6 ">
+ <select name="Performance measure" style="width:100%;background-color:#2276a6 ">
+ <option value=""=>Performance measure</option>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select> 
+</div><!--  end of drop down div-->
+<div id="graph" style="width:99%;height:250px;border:2px solid black; margin-top:15px;background-color:#2276a6"><img style="margin-top:15px;margin-left:50px" src="graph.png" width="80%" height="200" > 
+</div><!--end of graph  -->
+<div id="down" style="width:99%;height:50px;border:2px solid black; margin-top:15px;background-color:#2276a6 ">
+
+<!--  X-axis drop down-->
+<div id ="xAxis" style="width:35%;height:20px; margin-top:10px;background-color:#2276a6 ">
+ <select name="X-axis" style="width:100%;background-color:#2276a6 ">
+ <option value=""=>X-Axis:Time of day</option>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select> 
+</div><!--  end of x axis drop down div-->
+ <div id="export" style="margin-left:450px;position:relative;margin-top:-20px;background-color:#2276a6 ">
+ <button style="background-color:#2276a6 " type="button">Export Data</button> 
+ 
+</div><!--end of export div  -->
+<div id="back" style="margin-left:750px;position:relative;margin-top:-20px;background-color:#2276a6 ">
+  <button onclick="location.href = 'table.html'" style="background-color:#2276a6;" type="button"> <- Back</button>
+ </div>
+</div><!-- end of down div -->
+</div><!-- right div closing -->
+<!-- <div style="width:100%;height:200px;border:2px solid black;background-color:#2276a6 ">System Name</div>
+ --></div><!-- main div closing -->
+   
+</body>
+</html>

@@ -1,0 +1,18 @@
+ID,Region,"All Read","All Edit",Division
+0,0,0,0,--
+1,0,1,1,--
+2,0,1,0,"NCDOT COST/Statewide"
+3,1,0,0,"NCDOT Division 1"
+4,2,0,0,"NCDOT Division 2"
+5,3,0,0,"NCDOT Division 3"
+6,4,0,0,"NCDOT Division 4"
+7,5,0,0,"NCDOT Division 5"
+8,6,0,0,"NCDOT Division 6"
+9,7,0,0,"NCDOT Division 7"
+10,8,0,0,"NCDOT Division 8"
+11,9,0,0,"NCDOT Division 9"
+12,10,0,0,"NCDOT Division 10"
+13,11,0,0,"NCDOT Division 11"
+14,12,0,0,"NCDOT Division 12"
+15,13,0,0,"NCDOT Division 13"
+16,14,0,0,"NCDOT Division 14"
